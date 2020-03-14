@@ -46,9 +46,10 @@ export default class MultiCrops extends React.Component<CropsProps> {
         coordinates: any,
         onChange?: any,
         onDelete?: any,
-        onDraw?: any
+        onDrag?: any,
+        onDraw?: any,
+        onClick?:any
     }
-
     renderCrops(props: any): any
     getCursorPosition(e: any): void
     handleMouseMove(e: any): void

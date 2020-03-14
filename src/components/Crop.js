@@ -88,6 +88,20 @@ class Crop extends Component {
     }
   }
 
+  handleClick = () => {
+    const {
+      index,
+      coordinate,
+      coordinates,
+      onClick
+    } = this.props
+
+    if (is(Function, onClick)) {
+      onClick(index, coordinate, coordinates)
+    }
+
+  }
+
   handleDelete = () => {
     const {
       index,
@@ -113,6 +127,7 @@ class Crop extends Component {
       <div
         style={Crop.cropStyle(coordinate)}
         ref={crop => this.crop = crop}
+        onClick={this.handleClick}
       >
         <NumberIcon number={index + 1} />
         <DeleteIcon
@@ -138,7 +153,8 @@ Crop.propTypes = {
   onDrag: PropTypes.func, // eslint-disable-line
   onDelete: PropTypes.func, // eslint-disable-line
   onChange: PropTypes.func, // eslint-disable-line
-  coordinates: PropTypes.array // eslint-disable-line
+  coordinates: PropTypes.array, // eslint-disable-line
+  onClick: PropTypes.func // eslint-disable-line
 }
 
 export default Crop
